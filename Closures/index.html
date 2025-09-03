@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Closure Learning!</title>
+  </head>
+  <body>
+    <h1>ClOSURES LEARNING !!!</h1>
+    <ul>
+      <li>
+        <b>What is a closure?</b>
+        <p>
+          "A closure is a function that is placed inside a another function and
+          uses a variables from the parent function and the main function
+          returns a inner function".
+        </p>
+        <code>
+          function xyz() { let a = 10; return function inner() { console.log(a);
+          }; } let res = xyz(); res();
+        </code>
+      </li>
+      <li>
+        <b>How do closures work? </b>
+        <p>
+          IN SIMPLE :"dekho hota ye hai ki jab bhi hum ek function ke andar ek function
+          banate hai to wo inner function apne parent function ke sare variables
+          ko access kar sakta hai chahe wo parent function execute ho chuka ho
+          ya nahi. ye isliye hota hai kyunki jab ek function create hota hai to
+          uske sath ek scope bhi create hota hai jisme wo function aur uske
+          variables rehte hai. jab inner function create hota hai to wo apne
+          parent function ke scope ko yaad rakh leta hai aur uske variables ko
+          access kar sakta hai".
+        </p>
+        <p>IN DETAIL :
+            <ul>
+                <li>
+                    "pehle JS outer function ko read krega. Toh Jab bhi JS kisi function ko read krta hai toh woh ek space/scope/room create krta hai.
+                    isi room ke andr saare variable declare aur initialize hote hai. aur isi room mein inner function bhi define hota hai. Jaise hi inner function declare hota hai,
+                     waise hi usko ek [[environment]] mil jata hai. isme sare variable ka  reference save ho jate hai. [[environement]] lexically located values ko store krta hai.Ab important part 
+                     jb outer function apna kaam khtm kr deta hai toh ye inner function ko return kr deta hai , so jb bhi function return kr deta hai toh uske variables ko garbage collecter collect kr leta hai, normally. 
+                     yha kya hota hai inner function ke pass abhi bhi us outer function ke variable ka access kyuki uske pass [[environment]] hai.Isliye woh room ek trike se preserve ho jata hai tb tk inner function ke pass access hai."
+                </li>
+                <p>Note: "!!! [[environment]] property kha hai , inner ke andr. Jb tk inner function exist krega  tb tk room ka access rhega. Jaise hi inner=NULL ho gya waise hi memory clear ho jaegi aur access bhi ..."</p>
+            </ul>
+        </p>
+      </li>
+      <li>
+        <b>Use cases for closures</b>
+        <p>
+          Closures are commonly used for data encapsulation, creating private
+          variables, and implementing function factories.
+        </p>
+      </li>
+      <li>Chlo code lrle dekho</li>
+    </ul>
+    <script src="script.js" defer></script>
+  </body>
+</html>
