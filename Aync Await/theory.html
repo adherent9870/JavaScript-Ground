@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Async/Await Complete Guide</title>
+    <script src="./script.js"></script>
+  </head>
+  <body>
+    <h1>ASync and Await</h1>
+    <h2>what is Async/Await?</h2>
+    <p>
+      ye ek JavaScript ka feature hai jo promises ke upr bna hai jisme hum
+      asynchronous code ko handle krte hai
+    </p>
+    <h3>Async Keyword</h3>
+    <ul>
+      <li>async function ko declare krne ke liye</li>
+      <li>ye ek promise return krta hai</li>
+      <li>
+        aur function ke andr hum ek "await" keyword ka bhi istmal krte hai
+      </li>
+    </ul>
+    <h3>Await Keyword</h3>
+    <ul>
+      <li>ye sirf async function ke andr hi use ho skta hai</li>
+      <li>
+        ye promise ke resolve hone ka wait krta hai mtlb code pause ho jata hai
+        jb tk kuch return nhi hota
+      </li>
+      <li>agr promise reject ho jata hai toh error de dega</li>
+    </ul>
+
+    <h2>Notes:</h2>
+    <ul>
+      <li>async function hamesha promise return krta hai</li>
+      <li>agr function me return value hai toh wo resolve ho jayega</li>
+      <li>agr function me error hai toh wo reject ho jayega</li>
+      <li>await sirf async function ke andr hi use ho skta hai</li>
+      <li>await promise ke resolve hone ka wait krta hai</li>
+      <li>agr promise reject ho jata hai toh error de dega</li>
+    </ul>
+
+    <hr />
+  </body>
+</html>
