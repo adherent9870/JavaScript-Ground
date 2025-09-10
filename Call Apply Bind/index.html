@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JavaScript call(), apply(), and bind()</title>
+    <link rel="stylesheet" href="./style.css" />
+    <script src="./script.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>JavaScript Function Methods</h1>
+        <p class="subtitle">Understanding call(), apply(), and bind()</p>
+      </header>
+
+      <div class="intro">
+        <p>
+          In JavaScript, <code>call</code>, <code>apply</code>, and
+          <code>bind</code> are methods available on functions that allow you to
+          control the value of <code>this</code> and pass arguments in different
+          ways.
+        </p>
+      </div>
+
+      <div class="methods-container">
+        <div class="method call">
+          <div class="method-header">call()</div>
+          <div class="method-content">
+            <p>
+              The <code>call()</code> method calls a function with a given
+              <code>this</code> value and arguments provided individually.
+            </p>
+
+            <div class="code-block">
+              // Syntax<br />
+              function.call(thisArg, arg1, arg2, ...)
+            </div>
+
+            <div class="interactive-demo">
+              <h3>Try it out:</h3>
+              <div class="input-group">
+                <label for="call-name">Name:</label>
+                <input type="text" id="call-name" value="John" />
+              </div>
+              <div class="input-group">
+                <label for="call-age">Age:</label>
+                <input type="number" id="call-age" value="25" />
+              </div>
+              <button onclick="demoCall()">Run call()</button>
+              <div class="output" id="call-output"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="method apply">
+          <div class="method-header">apply()</div>
+          <div class="method-content">
+            <p>
+              The <code>apply()</code> method calls a function with a given
+              <code>this</code> value and arguments provided as an array.
+            </p>
+
+            <div class="code-block">
+              // Syntax<br />
+              function.apply(thisArg, [argsArray])
+            </div>
+
+            <div class="interactive-demo">
+              <h3>Try it out:</h3>
+              <div class="input-group">
+                <label for="apply-name">Name:</label>
+                <input type="text" id="apply-name" value="Jane" />
+              </div>
+              <div class="input-group">
+                <label for="apply-scores">Scores (comma separated):</label>
+                <input type="text" id="apply-scores" value="85,92,78" />
+              </div>
+              <button onclick="demoApply()">Run apply()</button>
+              <div class="output" id="apply-output"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="method bind">
+          <div class="method-header">bind()</div>
+          <div class="method-content">
+            <p>
+              The <code>bind()</code> method creates a new function that, when
+              called, has its <code>this</code> keyword set to the provided
+              value.
+            </p>
+
+            <div class="code-block">
+              // Syntax<br />
+              function.bind(thisArg, arg1, arg2, ...)
+            </div>
+
+            <div class="interactive-demo">
+              <h3>Try it out:</h3>
+              <div class="input-group">
+                <label for="bind-name">Name:</label>
+                <input type="text" id="bind-name" value="Bob" />
+              </div>
+              <div class="input-group">
+                <label for="bind-age">Age:</label>
+                <input type="number" id="bind-age" value="30" />
+              </div>
+              <button onclick="demoBind()">Create bound function</button>
+              <button onclick="executeBound()">Execute bound function</button>
+              <div class="output" id="bind-output"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="comparison">
+        <h2>Key Differences</h2>
+        <div class="code-block" style="margin-top: 20px">
+          // call() - arguments passed individually<br />
+          func.call(context, arg1, arg2);<br /><br />
+
+          // apply() - arguments passed as array<br />
+          func.apply(context, [arg1, arg2]);<br /><br />
+
+          // bind() - returns a new function with bound context<br />
+          const boundFunc = func.bind(context, arg1, arg2);<br />
+          boundFunc();
+        </div>
+      </div>
+
+      <footer>
+        <p>Created with JavaScript, HTML, and CSS</p>
+      </footer>
+    </div>
+  </body>
+</html>

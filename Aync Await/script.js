@@ -40,3 +40,12 @@ async function loadUserProfile(userId) {
 }
 
 //-------------------------------------------------
+
+//async
+async function lucknow() {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve("city of nawabs");
+    }, 2000);
+  });
+}

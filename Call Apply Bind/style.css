@@ -1,0 +1,181 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
+  color: #333;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  background-color: rgba(255, 255, 255, 0.95);
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+}
+
+header {
+  background: linear-gradient(90deg, #4b6cb7, #182848);
+  color: white;
+  padding: 30px 20px;
+  text-align: center;
+}
+
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  font-size: 1.2rem;
+  opacity: 0.9;
+}
+
+.intro {
+  padding: 20px;
+  text-align: center;
+  line-height: 1.6;
+  background-color: #f8f9fa;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.methods-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 20px;
+  gap: 20px;
+}
+
+.method {
+  flex: 1;
+  min-width: 300px;
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.method:hover {
+  transform: translateY(-5px);
+}
+
+.method-header {
+  padding: 15px;
+  color: white;
+  text-align: center;
+  font-size: 1.5rem;
+}
+
+.call .method-header {
+  background-color: #4b6cb7;
+}
+
+.apply .method-header {
+  background-color: #b21f1f;
+}
+
+.bind .method-header {
+  background-color: #fdbb2d;
+  color: #333;
+}
+
+.method-content {
+  padding: 20px;
+}
+
+.method-content p {
+  margin-bottom: 15px;
+  line-height: 1.5;
+}
+
+.code-block {
+  background-color: #2d2d2d;
+  color: #f8f8f2;
+  padding: 15px;
+  border-radius: 5px;
+  font-family: "Consolas", monospace;
+  overflow-x: auto;
+  margin: 15px 0;
+  line-height: 1.4;
+}
+
+.interactive-demo {
+  background-color: #f8f9fa;
+  padding: 20px;
+  border-radius: 8px;
+  margin-top: 15px;
+}
+
+.input-group {
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: 500;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+}
+
+button {
+  background-color: #4b6cb7;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+
+button:hover {
+  background-color: #3a5999;
+}
+
+.output {
+  margin-top: 15px;
+  padding: 15px;
+  background-color: #e9ecef;
+  border-radius: 4px;
+  font-family: "Consolas", monospace;
+  min-height: 50px;
+}
+
+.comparison {
+  padding: 30px 20px;
+  background-color: #f8f9fa;
+  text-align: center;
+}
+
+footer {
+  text-align: center;
+  padding: 20px;
+  background: linear-gradient(90deg, #4b6cb7, #182848);
+  color: white;
+}
+
+@media (max-width: 768px) {
+  .methods-container {
+    flex-direction: column;
+  }
+
+  .method {
+    min-width: 100%;
+  }
+}
