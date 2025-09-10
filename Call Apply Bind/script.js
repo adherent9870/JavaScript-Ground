@@ -65,4 +65,7 @@ window.onload = function () {
   demoCall();
   demoApply();
   demoBind();
+
+  let a = [1, 1, 1, 1, 1, 1, 1, 1];
+  let v = a;
 };

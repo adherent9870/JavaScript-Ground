@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Async/Await: for...of vs forEach</title>
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+
+      body {
+        background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
+        color: #333;
+        padding: 20px;
+        min-height: 100vh;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        background: rgba(255, 255, 255, 0.9);
+        border-radius: 15px;
+        padding: 30px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      }
+
+      header {
+        text-align: center;
+        padding: 20px 0;
+        margin-bottom: 30px;
+      }
+
+      h1 {
+        font-size: 2.5rem;
+        margin-bottom: 10px;
+        color: #1a2a6c;
+      }
+
+      .subtitle {
+        font-size: 1.2rem;
+        color: #666;
+        margin-bottom: 30px;
+      }
+
+      .comparison {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
+        margin-bottom: 40px;
+      }
+
+      .card {
+        background: white;
+        border-radius: 10px;
+        padding: 25px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+      }
+
+      .card:hover {
+        transform: translateY(-5px);
+      }
+
+      .card-header {
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
+        color: #1a2a6c;
+      }
+
+      .card-header h2 {
+        font-size: 1.8rem;
+      }
+
+      .code-example {
+        background: #2c5364;
+        color: #fff;
+        padding: 15px;
+        border-radius: 8px;
+        margin: 15px 0;
+        overflow-x: auto;
+        font-family: "Courier New", monospace;
+        line-height: 1.5;
+      }
+
+      .output {
+        background: #f8f9fa;
+        border-left: 4px solid #1a2a6c;
+        padding: 15px;
+        margin: 15px 0;
+        font-family: "Courier New", monospace;
+        min-height: 200px;
+        border-radius: 0 8px 8px 0;
+      }
+
+      .btn {
+        background: #1a2a6c;
+        color: white;
+        border: none;
+        padding: 12px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 1rem;
+        transition: background 0.3s;
+        margin-top: 10px;
+      }
+
+      .btn:hover {
+        background: #fdbb2d;
+        color: #333;
+      }
+
+      .explanation {
+        background: #e9ecef;
+        padding: 20px;
+        border-radius: 8px;
+        margin-top: 30px;
+      }
+
+      .key-points {
+        list-style-type: none;
+        margin: 20px 0;
+      }
+
+      .key-points li {
+        margin-bottom: 10px;
+        padding-left: 30px;
+        position: relative;
+      }
+
+      .key-points li:before {
+        content: "•";
+        position: absolute;
+        left: 0;
+        color: #1a2a6c;
+        font-weight: bold;
+        font-size: 1.5rem;
+      }
+
+      @media (max-width: 900px) {
+        .comparison {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>Async/Await: for...of vs forEach</h1>
+        <p class="subtitle">
+          How these loops handle asynchronous operations differently
+        </p>
+      </header>
+
+      <div class="comparison">
+        <div class="card">
+          <div class="card-header">
+            <h2>for...of with Async/Await</h2>
+          </div>
+          <p>
+            The <code>for...of</code> loop respects the
+            <code>await</code> keyword and will pause execution until each
+            asynchronous operation completes.
+          </p>
+
+          <div class="code-example">
+            <pre><code>async function processWithForOf() {
+  const items = [1, 2, 3];
+  
+  for (const item of items) {
+    await new Promise(resolve => 
+      setTimeout(resolve, 1000)
+    );
+    console.log(`Processed ${item} at ${new Date().toLocaleTimeString()}`);
+  }
+}</code></pre>
+          </div>
+
+          <button class="btn" onclick="runForOf()">Run for...of Example</button>
+          <div class="output" id="forOfOutput">Output will appear here...</div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <h2>forEach with Async/Await</h2>
+          </div>
+          <p>
+            The <code>forEach</code> method does not wait for promises to
+            resolve. It fires all asynchronous operations almost simultaneously.
+          </p>
+
+          <div class="code-example">
+            <pre><code>async function processWithForEach() {
+  const items = [1, 2, 3];
+  
+  items.forEach(async (item) => {
+    await new Promise(resolve => 
+      setTimeout(resolve, 1000)
+    );
+    console.log(`Processed ${item} at ${new Date().toLocaleTimeString()}`);
+  });
+}</code></pre>
+          </div>
+
+          <button class="btn" onclick="runForEach()">
+            Run forEach Example
+          </button>
+          <div class="output" id="forEachOutput">
+            Output will appear here...
+          </div>
+        </div>
+      </div>
+
+      <div class="explanation">
+        <h2>Key Differences Explained</h2>
+        <ul class="key-points">
+          <li>
+            <strong>for...of</strong> respects the await keyword and executes
+            operations sequentially
+          </li>
+          <li>
+            <strong>forEach</strong> does not wait for promises and fires all
+            operations concurrently
+          </li>
+          <li>
+            <strong>for...of</strong> maintains the order of execution and is
+            predictable
+          </li>
+          <li>
+            <strong>forEach</strong> with async callbacks completes out of order
+            and doesn't wait for all operations to finish
+          </li>
+          <li>
+            Use <strong>for...of</strong> when you need sequential execution of
+            async operations
+          </li>
+          <li>
+            Use <strong>Promise.all()</strong> with map if you want parallel
+            execution with better control than forEach
+          </li>
+        </ul>
+
+        <div class="code-example">
+          <pre><code>// Better alternative to forEach for async operations
+async function processWithPromiseAll() {
+  const items = [1, 2, 3];
+  
+  await Promise.all(items.map(async (item) => {
+    await new Promise(resolve => setTimeout(resolve, 1000));
+    console.log(`Processed ${item}`);
+  }));
+}</code></pre>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      async function processWithForOf() {
+        const output = document.getElementById("forOfOutput");
+        output.innerHTML = "Starting...<br>";
+
+        const items = [1, 2, 3];
+
+        for (const item of items) {
+          await new Promise((resolve) => setTimeout(resolve, 1000));
+          const time = new Date().toLocaleTimeString();
+          output.innerHTML += `Processed ${item} at ${time}<br>`;
+        }
+
+        output.innerHTML += "All operations completed sequentially!<br>";
+      }
+
+      async function processWithForEach() {
+        const output = document.getElementById("forEachOutput");
+        output.innerHTML = "Starting...<br>";
+
+        const items = [1, 2, 3];
+
+        items.forEach(async (item) => {
+          await new Promise((resolve) => setTimeout(resolve, 1000));
+          const time = new Date().toLocaleTimeString();
+          output.innerHTML += `Processed ${item} at ${time}<br>`;
+        });
+
+        output.innerHTML += "forEach does not wait for async operations!<br>";
+      }
+
+      function runForOf() {
+        processWithForOf();
+      }
+
+      function runForEach() {
+        processWithForEach();
+      }
+    </script>
+  </body>
+</html>

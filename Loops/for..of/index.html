@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JavaScript for...of Loop Guide</title>
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+
+      body {
+        background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+        color: #333;
+        padding: 20px;
+        min-height: 100vh;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      header {
+        text-align: center;
+        padding: 30px 0;
+        color: white;
+      }
+
+      h1 {
+        font-size: 2.8rem;
+        margin-bottom: 10px;
+        color: #ffd700;
+      }
+
+      .subtitle {
+        font-size: 1.2rem;
+        color: #ccc;
+        margin-bottom: 30px;
+      }
+
+      .content {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+      }
+
+      .card {
+        background: white;
+        border-radius: 10px;
+        padding: 25px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        transition: transform 0.3s ease;
+      }
+
+      .card:hover {
+        transform: translateY(-5px);
+      }
+
+      .card-header {
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
+        color: #2c5364;
+      }
+
+      .card-header i {
+        font-size: 24px;
+        margin-right: 10px;
+      }
+
+      .card h2 {
+        font-size: 1.8rem;
+      }
+
+      .code-example {
+        background: #2c5364;
+        color: #fff;
+        padding: 15px;
+        border-radius: 8px;
+        margin: 15px 0;
+        overflow-x: auto;
+        font-family: "Courier New", monospace;
+      }
+
+      .comparison-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+      }
+
+      .comparison-table th,
+      .comparison-table td {
+        border: 1px solid #ddd;
+        padding: 12px;
+        text-align: left;
+      }
+
+      .comparison-table th {
+        background-color: #2c5364;
+        color: white;
+      }
+
+      .comparison-table tr:nth-child(even) {
+        background-color: #f2f2f2;
+      }
+
+      .key-points {
+        list-style-type: none;
+        margin: 20px 0;
+      }
+
+      .key-points li {
+        margin-bottom: 10px;
+        padding-left: 30px;
+        position: relative;
+      }
+
+      .key-points li:before {
+        content: "✓";
+        position: absolute;
+        left: 0;
+        color: #2c5364;
+        font-weight: bold;
+      }
+
+      .full-width {
+        grid-column: 1 / span 2;
+      }
+
+      @media (max-width: 900px) {
+        .content {
+          grid-template-columns: 1fr;
+        }
+
+        .full-width {
+          grid-column: 1;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>JavaScript for...of Loop</h1>
+        <p class="subtitle">Complete guide with examples and interview tips</p>
+      </header>
+
+      <div class="content">
+        <div class="card">
+          <div class="card-header">
+            <h2>What is for...of?</h2>
+          </div>
+          <p>
+            The <strong>for...of</strong> statement creates a loop iterating
+            over iterable objects (including Array, Map, Set, String,
+            TypedArray, arguments object, etc.), invoking a custom iteration
+            hook with statements to be executed for the value of each distinct
+            property.
+          </p>
+
+          <div class="code-example">
+            <pre><code>// Basic syntax
+for (variable of iterable) {
+  // code block to be executed
+}</code></pre>
+          </div>
+
+          <h3>Key Points:</h3>
+          <ul class="key-points">
+            <li>Introduced in ES6 (2015)</li>
+            <li>Iterates over values (not keys)</li>
+            <li>Works with any iterable object</li>
+            <li>Cannot be used with objects directly</li>
+            <li>Cleaner syntax than traditional for loops</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <h2>Basic Examples</h2>
+          </div>
+
+          <div class="code-example">
+            <pre><code>// Iterating over an array
+const fruits = ['apple', 'banana', 'orange'];
+for (const fruit of fruits) {
+  console.log(fruit);
+}
+// Output: apple, banana, orange
+
+// Iterating over a string
+const str = 'hello';
+for (const char of str) {
+  console.log(char);
+}
+// Output: h, e, l, l, o
+
+// Iterating over a Set
+const uniqueNumbers = new Set([1, 2, 3, 3, 4]);
+for (const num of uniqueNumbers) {
+  console.log(num);
+}
+// Output: 1, 2, 3, 4</code></pre>
+          </div>
+
+          <h3>Using with break and continue</h3>
+          <div class="code-example">
+            <pre><code>const numbers = [1, 2, 3, 4, 5];
+for (const num of numbers) {
+  if (num === 3) break; // Exit loop when num is 3
+  console.log(num);
+}
+// Output: 1, 2</code></pre>
+          </div>
+        </div>
+
+        <div class="card full-width">
+          <div class="card-header">
+            <h2>Comparison with Other Loops</h2>
+          </div>
+
+          <table class="comparison-table">
+            <thead>
+              <tr>
+                <th>Loop Type</th>
+                <th>Usage</th>
+                <th>Best For</th>
+                <th>Limitations</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>for...of</strong></td>
+                <td>Iterating over values of iterables</td>
+                <td>Arrays, Strings, Maps, Sets</td>
+                <td>Doesn't work with objects directly</td>
+              </tr>
+              <tr>
+                <td><strong>for...in</strong></td>
+                <td>Iterating over enumerable properties</td>
+                <td>Objects</td>
+                <td>May iterate over prototype properties</td>
+              </tr>
+              <tr>
+                <td><strong>forEach</strong></td>
+                <td>Iterating over array elements</td>
+                <td>Arrays</td>
+                <td>Cannot break or continue</td>
+              </tr>
+              <tr>
+                <td><strong>for</strong> (traditional)</td>
+                <td>General purpose looping</td>
+                <td>Any situation needing index control</td>
+                <td>Verbose syntax</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <h2>Interview Questions</h2>
+          </div>
+
+          <h3>Common Questions:</h3>
+          <ul class="key-points">
+            <li>What is the difference between for...of and for...in?</li>
+            <li>
+              Can you use for...of with objects? If not, how would you make it
+              work?
+            </li>
+            <li>How does for...of handle async/await compared to forEach?</li>
+            <li>What are iterable protocols in JavaScript?</li>
+            <li>How would you iterate over a Map using for...of?</li>
+          </ul>
+
+          <h3>Sample Answers:</h3>
+          <div class="code-example">
+            <pre><code>// Difference between for...of and for...in
+const arr = [3, 5, 7];
+arr.foo = 'bar';
+
+for (const i in arr) {
+  console.log(i); // logs "0", "1", "2", "foo"
+}
+
+for (const i of arr) {
+  console.log(i); // logs 3, 5, 7
+}</code></pre>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <h2>Advanced Usage</h2>
+          </div>
+
+          <div class="code-example">
+            <pre><code>// Iterating over a Map
+const map = new Map([['a', 1], ['b', 2]]);
+for (const [key, value] of map) {
+  console.log(key, value);
+}
+// Output: a 1, b 2
+
+// With async/await
+async function processArray(array) {
+  for (const item of array) {
+    await processItem(item); // Waits for each process to complete
+  }
+}
+
+// Using with entries(), keys(), values()
+const numbers = [10, 20, 30];
+for (const [index, value] of numbers.entries()) {
+  console.log(index, value);
+}
+// Output: 0 10, 1 20, 2 30</code></pre>
+          </div>
+
+          <h3>Making Objects Iterable</h3>
+          <div class="code-example">
+            <pre><code>const myObject = {
+  data: [1, 2, 3],
+  [Symbol.iterator]() {
+    let index = 0;
+    return {
+      next: () => {
+        if (index < this.data.length) {
+          return { value: this.data[index++], done: false };
+        } else {
+          return { done: true };
+        }
+      }
+    };
+  }
+};
+
+for (const item of myObject) {
+  console.log(item); // 1, 2, 3
+}</code></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Interactive examples
+      document.addEventListener("DOMContentLoaded", function () {
+        console.log("for...of Loop Examples:");
+
+        // Array example
+        const fruits = ["apple", "banana", "orange"];
+        console.log("Fruits:");
+        for (const fruit of fruits) {
+          console.log(fruit);
+        }
+
+        // String example
+        const str = "hello";
+        console.log("String characters:");
+        for (const char of str) {
+          console.log(char);
+        }
+
+        // Set example
+        const uniqueNumbers = new Set([1, 2, 3, 3, 4]);
+        console.log("Unique numbers:");
+        for (const num of uniqueNumbers) {
+          console.log(num);
+        }
+
+        // Map example
+        const map = new Map([
+          ["a", 1],
+          ["b", 2],
+        ]);
+        console.log("Map entries:");
+        for (const [key, value] of map) {
+          console.log(key, value);
+        }
+      });
+    </script>
+  </body>
+</html>
