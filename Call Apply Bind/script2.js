@@ -6,6 +6,7 @@ window.onload = () => {
   const result = add.call(1, 2);
   console.log(result); //  NAN     - because 'this' is 1, not an object
   // 'this' is not used in the function, so it doesn't affect the result   function.call(thisArg, arg1, arg2, ...)
+
   console.log(add(1, 2));
 
   function showValue(a, b) {
@@ -30,10 +31,4 @@ window.onload = () => {
   const obj2 = { message: "Hello, World!" };
   const value = greet.bind(obj2);
   value();
-
-  for (var i = 0; i < 3; i++) {
-    setTimeout(function () {
-      console.log(i);
-    }, 100);
-  }
 };
