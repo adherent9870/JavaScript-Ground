@@ -1,9 +1,19 @@
 window.onload = () => {
   let data;
+  let span = document.querySelector("#message");
   document.getElementById("btn").onclick = async function () {
     let response = await fetch("https://jsonplaceholder.typicode.com/users");
     data = await response.json();
     console.log(data);
+    showTable(data);
+  };
+  let search = document.querySelector("#search");
+  search.addEventListener("input", function () {
+    let value = search.value.trim();
+    searching(value);
+  });
+  document.querySelector("#clearData").onclick = function () {
+    search.value = "";
     showTable(data);
   };
   let select = document.querySelector("#select-list");
@@ -15,11 +25,10 @@ window.onload = () => {
       sortedData = data.sort((a, b) => a.name.localeCompare(b.name));
     } else if (selectedValue == 2) {
       sortedData = data.sort((a, b) => b.name.localeCompare(a.name));
-    } else {
-      sortedData = data;
+    } else if (selectedValue == 0) {
+      sortedData = data.sort((a, b) => a.id - b.id);
     }
 
-    console.log(sortedData);
     showTable(sortedData);
   });
 
@@ -49,5 +58,19 @@ window.onload = () => {
     });
     table += `</table>`;
     document.getElementById("table-container").innerHTML = table;
+  }
+
+  function searching(value) {
+    let result;
+    if (value === "") {
+      result = [...data];
+    }
+    result = data.filter(
+      (item) =>
+        item.name?.toLowerCase().startsWith(value.toLowerCase()) ||
+        item.city?.toLowerCase().startsWith(value.toLowerCase())
+    );
+    console.log(result);
+    showTable(result);
   }
 };

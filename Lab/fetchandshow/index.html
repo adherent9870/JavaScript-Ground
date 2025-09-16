@@ -5,15 +5,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Fetch and Script</title>
     <script src="script.js" defer></script>
+    <style>
+      body {
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+      h2 {
+        text-align: center;
+        font-family: cursive;
+      }
+    </style>
   </head>
   <body>
     <h2>This is fetch and Show</h2>
-    <button id="btn">Fetch</button>
-    <select title="select-list" id="select-list">
-      <option value="0">sorting</option>
-      <option value="1">name (a-z)</option>
-      <option value="2">name(z-a)</option>
-    </select>
+    <div>
+      <button id="btn">Fetch</button>
+      <select title="select-list" id="select-list">
+        <option value="0">sorting</option>
+        <option value="1">name (a-z)</option>
+        <option value="2">name(z-a)</option>
+      </select>
+      <input placeholder="search,name,city" id="search" />
+      <button id="clearData">X</button>
+    </div>
+    <span id="message"></span>
     <div id="table-container"></div>
   </body>
 </html>
