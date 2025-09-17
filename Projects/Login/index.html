@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>News Hub</title>
+    <script src="index.js"></script>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: cursive;
+      }
+      #container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+      }
+      #loginandregister {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 70vw;
+      }
+      #login {
+        width: 50%;
+        padding: 40px 40px;
+      }
+      #register {
+        width: 50%;
+        padding: 40px 40px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="container">
+      <h1 title="newshub">News Hub</h1>
+      <div id="loginandregister">
+        <div id="login">
+          <h3 title="login">Login</h3>
+          <form name="login">
+            <label for="username">UserName:</label>
+            <input
+              type="text"
+              id="username"
+              placeholder="username..."
+              maxlength="30"
+            /><br />
+            <label for="password">Password:</label>
+            <input
+              type="text"
+              id="password"
+              placeholder="password..."
+              maxlength="30"
+            /><br />
+            <button type="submit" id="submit">Login</button>
+          </form>
+        </div>
+        <div id="register">
+          <h3>Register</h3>
+
+          <form name="register">
+            <label for="fullname">Full Name:</label>
+            <input
+              type="text"
+              id="fullname"
+              placeholder="fullname..."
+              maxlength="30"
+            />
+            <br />
+            <label for="name">Username: </label>
+            <input type="text" id="name" /><br />
+            <label for="passwords">Password:</label
+            ><input type="text" id="passwords" /><br />
+            <label for="confirmpasswords">Confirm-Password: </label
+            ><input type="text" id="confirmpasswords" /> <br />
+            <button type="submit">Register</button>
+          </form>
+        </div>
+      </div>
+      <div id="tasks">
+        <h3>!Tasks that we want to implement!</h3>
+        <ul>
+          <li>Form Validation</li>
+          <li>Prevent Duplicate Registration</li>
+          <li>
+            Redirect on Success , if Login successfull, it should redirect it to
+            next page
+          </li>
+        </ul>
+      </div>
+    </div>
+  </body>
+</html>
