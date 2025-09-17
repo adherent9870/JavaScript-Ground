@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Prototyping</title>
+  </head>
+  <body>
+    <h2>Javascript Prototyping</h2>
+    <div>
+      <h3>Objects in Javascript</h3>
+      <p>
+        Javascript mein almost everthing ek object except, the number,
+        boolean,string, null ,undefined,symbol, bigint
+      </p>
+      <span>type of Function is function , function in Js are objects</span>
+      <code id="code">
+        <pre>
+
+            let person = { 
+                            name: "Mohit", 
+                            age: 21,     
+                            greet: function() {
+                                    console.log("Hello, I'm " + this.name);
+                         } }; 
+            person.greet(); // Hello,  I'm Mohit
+            </pre
+        >
+      </code>
+    </div>
+    <div>
+      <h3>Prototype</h3>
+      <p>
+        Javascript mein hrr function ke pass Prototype property hoti hai (except
+        arrow function) ,aur jaise ke js mein almost sb kuch object , toh ye jo
+        function hai iske pass ek Prototype naam ki property hoti jisme
+      </p>
+      <ul>
+        <li>Prototype bss ek object hai</li>
+        <li>
+          iska kaam tb shuru hota hai jb kissi function ko as a constructor ki
+          trh use kiya jae with a new Keyword
+        </li>
+        <li>
+          <code>
+            <pre>
+            function Person(name) {
+                    this.name = name;
+                }
+            console.log(Person.prototype); 
+            // { constructor: ƒ Person }
+
+        </pre
+            >
+            function.prototype ek object hai. by default, isme ek property hoti
+            hai constructor jo ki parent ko refer krti hai
+          </code>
+        </li>
+      </ul>
+    </div>
+    <div>
+      <h3>__proto__</h3>
+      <h4>Ye kya bawal hai</h4>
+      <ul>
+        <li>
+          ye ek internal object hota jo ki almost every derived objects ke pass
+          hota hai.
+        </li>
+        <li>
+          Jab hum koi new object bnate hai toh class object ke jaise hum isme
+          mein parents ki properties ko inherit kr lete hai..
+        </li>
+        <li>
+          you types "const ibj=new Person("baap"):
+          <p>
+            isme kya hogi ki ,pehle ek empty object create hoga {}. phir usme ek
+            new hidden property __proto__ --- prototype of parent se set ho
+            jaegi, phir parent (yha person) ka constructor run ho jaega, akhir
+            mein new object return ho jaega
+          </p>
+        </li>
+        <li>
+          iska use kya hai??
+          <ul>
+            <li>
+              hum parent object ke methods ho share kr skte hai ,jaise hum
+              Array, String, Object ke methods ko use kr lete hai.
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+    <div>
+      <h1>PROCESS KYA HAI WOH SAMJHAO!!!!!!!</h1>
+      <code>
+        <pre>
+                Person.prototype.sayHi = function() {
+                    console.log("Hi, I'm " + this.name);
+                };
+
+                let user1 = new Person("Mohit");
+                let user2 = new Person("Vishwakarma");
+
+                user1.sayHi(); // Hi, I'm Mohit
+                user2.sayHi(); // Hi, I'm Vishwakarma
+
+            </pre
+        >
+      </code>
+      <ul>
+        <li>
+          jab hum user1.sayHi() likhte hai tb Javascript sabse pehle user1 ke
+          methods mein check krta hai
+        </li>
+        <li>
+          agr nhi mila toh -- __proto__ mein search krega (person.prototype)
+        </li>
+        <li>
+          agr yha bhi nhi mila tb --Person.prototype mein dekhega phir wha bhi
+          nhi mila tb --Object.prototype mein search krega
+        </li>
+        <li>agr tb bhi nhi mila toh undefined return kr dega</li>
+        <li>
+          <code>
+            <pre>
+user1 ---> __proto__ ---> Person.prototype ---> __proto__ ---> Object.prototype ---> null
+                
+        </pre
+            >
+          </code>
+        </li>
+      </ul>
+    </div>
+
+    <div>
+      <h3>Prototypical Inheritance</h3>
+      <p>
+        object properties ko inherit kr skte hai parent wle se "prototype chain
+        ki madad se"
+      </p>
+
+      <ul>
+        <li>
+          <ul>
+            <li>Simple Example</li>
+            <li>
+              <code>
+                <pre>
+                    let animal = { eats: true,
+                                   walk() {
+                                    console.log("Animal is walking");
+                          }
+                    };
+
+                    let rabbit ={jumps: true};
+
+                // Inheritance: rabbit → animal
+                    rabbit.__proto__ = animal;
+
+                    console.log(rabbit.eats); // true (inherited)
+                    rabbit.walk(); // "Animal is walking" (inherited)
+
+                </pre>
+              </code>
+            </li>
+            <li>
+              When you call rabbit.eats, JS doesn’t find it inside rabbit. It
+              follows the link (rabbit.__proto__) to animal. Finds eats there.
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+    <div>
+      <h3>Object Based</h3>
+      <ul>
+        <li>Javascript ek object based language hai.</li>
+        <li>
+          mtlb Javascript mein object ko create krne ke liye class ki zarurat
+          nhi padti
+        </li>
+      </ul>
+    </div>
+    <div>
+      <h1>NOTE::::</h1>
+      <ul>
+        <li>Prototype-based = inheritance via prototypes.</li>
+        <li>Class-based = inheritance via classes (sugar).</li>
+        <li>
+          Object-based = focus only on creating objects (no strict class
+          system).
+        </li>
+      </ul>
+    </div>
+  </body>
+</html>
