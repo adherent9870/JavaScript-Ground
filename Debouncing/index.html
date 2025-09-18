@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="index.js"></script>
+    <title>Debouncing</title>
+    <style>
+      body {
+        font-family: cursive;
+      }
+      input {
+        width: 90%;
+        padding: 10px;
+        border: 1px solid #ced4da;
+        border-radius: 4px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Debouncing</h1>
+    <input placeholder="search" id="input-field" type="text" />
+
+    <div id="container">
+      <h3>What is a debouncer?</h3>
+      <p>
+        Debouncing is a technique that is used to control how function is
+        executed, it ensures that function should run only a certain time,
+        without being event trigger again and again. example. jaisse hum search
+        functionality ko implement krna hai toh hum agr hrr click pr api call
+        krenge toh there will a lot of unnecessary call ho jaegi , toh inko
+        reduce krne ke liye is technique a use krte hai jisme ek timer set ho
+        jaega delay ke liye.
+      </p>
+
+      <code>
+        <pre>
+            function debounce(fn, delay) {
+            let timer;
+            return function (...args) {
+                     clearTimeout(timer);
+                     timer = setTimeout(() => fn.apply(this, args), delay);
+                };
+             }
+
+            function fetchResults(query) {
+                console.log("Fetching results for:", query);
+                // Imagine calling an API here
+            }
+
+            const searchBox = document.getElementById("search");
+            searchBox.addEventListener("keyup", debounce((e) => {
+            fetchResults(e.target.value);
+            }, 500));
+        </pre>
+      </code>
+    </div>
+  </body>
+</html>
