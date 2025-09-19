@@ -40,14 +40,15 @@
       <div id="loginandregister">
         <div id="login">
           <h3 title="login">Login</h3>
-          <form name="login">
-            <label for="username">UserName:</label>
+          <form name="LoginForm">
+            <label for="email">Email:</label>
             <input
               type="text"
-              id="username"
-              placeholder="username..."
+              id="email"
+              placeholder="email..."
               maxlength="30"
-            /><br />
+            />
+            <span id="emailError"></span><br />
             <label for="password">Password:</label>
             <input
               type="text"
@@ -57,11 +58,12 @@
             /><br />
             <button type="submit" id="submit">Login</button>
           </form>
+          <span id="Loginstatus"></span>
         </div>
         <div id="register">
           <h3>Register</h3>
 
-          <form name="register">
+          <form name="RegisterForm">
             <label for="fullname">Full Name:</label>
             <input
               type="text"
@@ -70,13 +72,27 @@
               maxlength="30"
             />
             <br />
-            <label for="name">Username: </label>
-            <input type="text" id="name" /><br />
+            <label for="emaail">Email: </label>
+            <input
+              type="text"
+              id="emaail"
+              placeholder="type your email..."
+            /><br />
             <label for="passwords">Password:</label
-            ><input type="text" id="passwords" /><br />
+            ><input
+              type="text"
+              id="passwords"
+              placeholder="type your password..."
+            /><br />
             <label for="confirmpasswords">Confirm-Password: </label
-            ><input type="text" id="confirmpasswords" /> <br />
+            ><input
+              type="text"
+              id="confirmpasswords"
+              placeholder="confirm your password..."
+            />
+            <br />
             <button type="submit">Register</button>
+            <span id="Registrationstatus"></span>
           </form>
         </div>
       </div>
@@ -89,6 +105,7 @@
             Redirect on Success , if Login successfull, it should redirect it to
             next page
           </li>
+          <li>Add debouncing to reduce calls on the server</li>
         </ul>
       </div>
     </div>
