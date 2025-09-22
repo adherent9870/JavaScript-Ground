@@ -4,6 +4,47 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dashboard</title>
+    <link rel="stylesheet" href="dashboard.css" />
+    <script src="dashboard.js"></script>
   </head>
-  <body></body>
+  <body>
+    <div class="top">
+      <h2>Social Hub</h2>
+      <input type="text" placeholder="Search..." class="search" />
+      <div class="account">
+        <img
+          src="./profile-pic.jpg"
+          alt="Profile Picture"
+          class="profile-pic"
+        />
+        <span class="username">User</span>
+      </div>
+    </div>
+    <div class="container">
+      <div class="side">
+        <div class="nav-container">
+          <div class="home link">Home</div>
+          <div class="posts link">Posts</div>
+          <div class="account link">Account</div>
+          <div class="logout link">Logout</div>
+        </div>
+        <div class="active-nav-container"></div>
+      </div>
+
+      <div class="main">
+        <div class="feeds">
+          <div class="feature-container">
+            <div class="filter">
+              <h3>Filter</h3>
+            </div>
+            <div class="sort">
+              <h3>Sort</h3>
+            </div>
+          </div>
+          <div class="content"></div>
+        </div>
+        <div class="friends"></div>
+      </div>
+    </div>
+  </body>
 </html>
