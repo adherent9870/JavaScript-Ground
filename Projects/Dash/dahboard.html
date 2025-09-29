@@ -25,10 +25,80 @@
         <div class="nav-container">
           <div class="home link">Home</div>
           <div class="posts link">Posts</div>
+          <div class="friendss link">Find One</div>
           <div class="account link">Account</div>
-          <div class="logout link">Logout</div>
         </div>
-        <div class="active-nav-container"></div>
+        <div class="active-nav-container">
+          <div class="home-container section active">Home</div>
+          <div class="post-container section">
+            <h3>Manage your Posts</h3>
+            <input
+              class="search-posts"
+              placeholder="search your posts.."
+            /><button class="clear">clear</button>
+            <div class="manage-posts">
+              <div class="create-post">
+                <h4>Create New Post</h4>
+                <form name="create-post">
+                  <span class="field-container"
+                    ><label for="title">Heading</label>
+                    <input
+                      type="text"
+                      id="title"
+                      name="title"
+                      placeholder="title"
+                      required /><br
+                  /></span>
+                  <span class="field-container"
+                    ><label for="body">Body</label>
+                    <input
+                      type="text"
+                      id="body"
+                      name="body"
+                      required
+                      placeholder="description" /><br
+                  /></span>
+                  <span class="field-container">
+                    <label for="category">Category</label>
+                    <select id="category" name="category">
+                      <option value="vibes">Vibes</option>
+                      <option value="shopping">Shopping</option>
+                      <option value="Travelling">Travel</option>
+                      <option value="Gaming">Gaming</option>
+                      <option value="Wedding">Wedding</option>
+                      <option value="Shoots">Shooting</option>
+                      <option value="Others">Others</option></select
+                    ><br
+                  /></span>
+                  <span class="field-container">
+                    <label for="city">City</label>
+                    <input
+                      type="text"
+                      id="city"
+                      name="city"
+                      placeholder="city..."
+                      required /><br
+                  /></span>
+                  <span class="field-container"
+                    ><label for="url">URL</label>
+                    <input type="url" id="url" name="url" required /><br
+                  /></span>
+                  <button id="create" type="submit">Post</button>
+                </form>
+              </div>
+              <div class="list-post">
+                <h3>Your Posts</h3>
+              </div>
+            </div>
+          </div>
+          <div class="friends-container section">
+            <div class="friend-requests">
+              <h3>Friend</h3>
+              <!-- <div class="friends-list"></div> -->
+            </div>
+          </div>
+          <div class="account-container section">Account</div>
+        </div>
       </div>
 
       <div class="main">
@@ -43,7 +113,13 @@
           </div>
           <div class="content"></div>
         </div>
-        <div class="friends"></div>
+        <div class="friends-Chat">
+          <div class="freinds">
+            <h3>Friends</h3>
+            <div class="friends-list"></div>
+          </div>
+          <div class="chat-container"></div>
+        </div>
       </div>
     </div>
   </body>

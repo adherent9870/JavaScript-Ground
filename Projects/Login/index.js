@@ -19,7 +19,7 @@ window.onload = function () {
     requestCall(data);
   });
   async function requestCall(data) {
-    fetch("http://127.0.0.1:3000/api/v1/auth/login", {
+    fetch("http://127.0.0.1:3000/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -29,9 +29,13 @@ window.onload = function () {
       .then((response) => response.json())
       .then((data) => {
         console.log(data);
+        localStorage.setItem("token", data.token);
+        localStorage.setItem("user", JSON.stringify(data.data.user));
         if (data.status === "success") {
           loginstatus.innerText = "👍Login successful...";
           loginstatus.style.color = "green";
+          window.location.href =
+            "http://127.0.0.1:5500/Projects/Dash/dahboard.html"; // Redirect to the dashboard
         } else {
           loginstatus.innerHTML = `👎Login failed. Please try again.<br><b>Reason:</b> ${data.message}`;
           loginstatus.style.color = "red";
@@ -65,7 +69,7 @@ window.onload = function () {
 
   async function registerRequestCall(data) {
     try {
-      const response = await fetch("http://127.0.0.1:3000/api/v1/auth/signup", {
+      const response = await fetch("http://127.0.0.1:3000/signup", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
